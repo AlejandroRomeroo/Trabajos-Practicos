@@ -4,10 +4,12 @@
  */
 package pedidos.modelos;
 
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import usuarios.modelos.Cliente;
 
 /**
@@ -62,12 +64,20 @@ public class Pedido {
     public void asignarEstado(Estados estado) {
         this.estado = estado;
     }
-
     
+    public String verHora() {
+        Instant instant = fechaYHora.atZone(ZoneId.systemDefault()).toInstant();
+        Date date = Date.from(instant);
+        String pattern = "HH:mm";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String dateOut = simpleDateFormat.format(date);
+        return dateOut;
+    }
+
     public void mostrar(){
         System.out.println("Nro: "+this.numero); 
         System.out.println("Cliente: " + cliente.verApellido() + ", " + cliente.verNombre());
-        System.out.println("Fecha: "+this.fechaYHora.getDayOfMonth()+"/"+ this.fechaYHora.getMonthValue()+"/"+ this.fechaYHora.getYear()+ "\t" + "Hora: " + this.fechaYHora.getHour() +":"+ this.fechaYHora.getMinute());
+        System.out.println("Fecha: "+this.fechaYHora.getDayOfMonth()+"/"+ this.fechaYHora.getMonthValue()+"/"+ this.fechaYHora.getYear()+ "\t"+ this.verHora());
         System.out.println("Estado: " +this.estado);
         System.out.println("\tProducto\t" + "Cantidad");
         System.out.println("\t==========================");
