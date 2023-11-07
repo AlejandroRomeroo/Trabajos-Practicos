@@ -12,7 +12,7 @@ import pedidos.modelos.Pedido;
  */
 public class Cliente extends Usuario{
     
-    private ArrayList<Pedido> pedido;
+    private ArrayList<Pedido> pedidos = new ArrayList<>();
     
     
     //Metodo Constructor 
@@ -30,13 +30,44 @@ public class Cliente extends Usuario{
     
    
     public ArrayList<Pedido> verPedido() {
-        return pedido;
+        return pedidos;
     }
 
     public void asignarPedido(ArrayList<Pedido> pedido) {
-        this.pedido = pedido;
+        this.pedidos = pedidos;
     }
     
+    @Override
+   public ArrayList<Pedido> verPedidos(){
+        return new ArrayList<> (this.pedidos);
+   }
+   
+   public void agregarPedido(Pedido pedido){
+       if (!pedidos.contains(pedido)) {
+           
+           this.pedidos.add(pedido);
+           
+       } else {
+
+                   this.pedidos.remove(pedido);
+                   this.pedidos.add(pedido);
+               
+           }
+       
+   }
+       
+       public void cancelarPedido(Pedido pedido){
+           
+           this.pedidos.remove(pedido);
+            
+       }
+       
+       
+       
+   
+}  
+
     
-    
-}
+
+
+

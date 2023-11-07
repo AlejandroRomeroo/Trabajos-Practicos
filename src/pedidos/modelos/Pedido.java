@@ -28,7 +28,7 @@ public class Pedido {
         
     }
 
-    public Pedido(int numero, LocalDateTime fechaYHora, Cliente cliente, Estado estado, ArrayList<ProductoDelPedido> productoDelPedido) {
+    public Pedido(int numero, LocalDateTime fechaYHora, ArrayList<ProductoDelPedido> productoDelPedido, Cliente cliente, Estado estado) {
         this.numero = numero;
         this.fechaYHora = fechaYHora;
         this.cliente = cliente;

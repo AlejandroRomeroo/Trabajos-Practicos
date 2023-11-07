@@ -9,21 +9,23 @@ package pedidos.modelos;
  * @author estudiante
  */
 public enum Estado {
-    CREADO, SOLICITADO, PROCESANDO, ENTREGADO;
+    CREANDO, SOLICITADO, PROCESANDO, ENTREGADO;
     
     @Override
     public String toString(){
         switch (this) {
-            case CREADO:
-                return "creado";
+            case CREANDO:
+                return "Creando";
             case SOLICITADO:
-                return "solicitado";   
+                return "Solicitado";   
             case PROCESANDO:
-                return "procesando";
+                return "Procesando";
             case ENTREGADO:
-                return "entregado";    
+                return "Entregado";    
             default:
                 throw new AssertionError();
         }
     }
+    
+    
 }

@@ -4,6 +4,10 @@
  */
 package usuarios.modelos;
 
+import java.util.ArrayList;
+import java.util.Objects;
+import pedidos.modelos.Pedido;
+
 /**
  *
  * @author NEW GAME
@@ -54,10 +58,33 @@ public abstract class Usuario {
         this.nombre = nombre;
     }
     
+     @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        return Objects.equals(this.correo, other.correo);
+    }
+    
      public void mostrar() {
         
         System.out.println("Apellido: " + this.apellido + ", Nombre: " + this.nombre);
         System.out.println("Correo: " + this.correo);
     }
+    
+     
+     
+ public abstract ArrayList<Pedido> verPedidos();
+
+    
+   
+     
   
 }
